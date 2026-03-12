@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aniekan A. Jim — Signals of Irreplaceability</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #B8A45A;
+      --gold-light: #D4C27A;
+      --gold-muted: #8C7A3A;
+      --charcoal: #1C1C1C;
+      --charcoal-mid: #2E2E2E;
+      --dark-grey: #3A3A3A;
+      --mid-grey: #6B6B6B;
+      --light-grey: #A8A8A8;
+      --cream: #F7F5F0;
+      --white: #FFFFFF;
+      --off-white: #FAFAF8;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--charcoal); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 24px 60px; display: flex; justify-content: space-between; align-items: center; background: rgba(250,250,248,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(184,164,90,0.15); }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 500; letter-spacing: 0.08em; color: var(--charcoal); text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-link { font-size: 13px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid-grey); text-decoration: none; transition: color 0.3s; }
+    .nav-link:hover { color: var(--gold); }
+
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 140px 60px 100px; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -120px; right: -80px; width: 600px; height: 600px; background: radial-gradient(ellipse, rgba(184,164,90,0.08) 0%, transparent 70%); pointer-events: none; }
+    .hero-label { font-size: 12px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; display: flex; align-items: center; gap: 14px; }
+    .hero-label::before { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
+    .hero-headline { font-family: 'Cormorant Garamond', serif; font-size: clamp(52px, 8vw, 110px); font-weight: 300; line-height: 1.0; letter-spacing: -0.02em; color: var(--charcoal); max-width: 820px; margin-bottom: 48px; }
+    .hero-headline em { font-style: italic; color: var(--gold); }
+    .hero-body { max-width: 540px; display: grid; gap: 20px; }
+    .hero-body p { font-size: 17px; font-weight: 300; color: var(--dark-grey); line-height: 1.75; }
+    .hero-scroll { margin-top: 80px; display: flex; align-items: center; gap: 16px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--light-grey); }
+    .hero-scroll::after { content: ''; display: block; width: 1px; height: 48px; background: linear-gradient(to bottom, var(--light-grey), transparent); }
+
+    .geo-accent { position: absolute; right: 60px; top: 50%; transform: translateY(-50%); display: grid; grid-template-columns: 1fr 1fr; gap: 8px; opacity: 0.18; }
+    .geo-accent .sq { background: var(--gold); }
+    .geo-accent .sq:nth-child(1) { width: 64px; height: 64px; }
+    .geo-accent .sq:nth-child(2) { width: 40px; height: 40px; margin-top: 24px; background: var(--charcoal); }
+    .geo-accent .sq:nth-child(3) { width: 28px; height: 28px; margin-top: 16px; }
+    .geo-accent .sq:nth-child(4) { width: 80px; height: 80px; background: var(--charcoal); }
+
+    .divider { height: 1px; background: linear-gradient(to right, transparent, rgba(184,164,90,0.3), transparent); margin: 0 60px; }
+
+    section { padding: 120px 60px; }
+    .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .section-headline { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 5vw, 58px); font-weight: 300; line-height: 1.15; color: var(--charcoal); margin-bottom: 40px; max-width: 700px; }
+    .section-headline em { font-style: italic; color: var(--gold); }
+    .body-text { font-size: 17px; font-weight: 300; color: var(--dark-grey); line-height: 1.8; max-width: 640px; }
+
+    .philosophy { background: var(--charcoal); color: var(--cream); }
+    .philosophy .section-label { color: var(--gold-light); }
+    .philosophy .section-headline { color: var(--cream); }
+    .philosophy .body-text { color: rgba(247,245,240,0.75); }
+    .phil-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 80px; }
+    .phil-column h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--gold-light); margin-bottom: 24px; letter-spacing: 0.02em; }
+    .phil-column p { font-size: 15px; font-weight: 300; color: rgba(247,245,240,0.65); line-height: 1.85; }
+    .phil-column ul { list-style: none; margin-top: 20px; display: grid; gap: 12px; }
+    .phil-column ul li { font-size: 15px; font-weight: 300; color: rgba(247,245,240,0.7); padding-left: 24px; position: relative; }
+    .phil-column ul li::before { content: '...'; position: absolute; left: 0; color: var(--gold-muted); font-size: 12px; top: 4px; }
+    .phil-divider { width: 40px; height: 1px; background: var(--gold-muted); margin: 48px 0; }
+    .phil-pull { font-family: 'Cormorant Garamond', serif; font-size: clamp(22px, 3vw, 32px); font-weight: 300; font-style: italic; color: var(--gold-light); line-height: 1.5; margin-top: 80px; padding-top: 60px; border-top: 1px solid rgba(184,164,90,0.2); max-width: 700px; }
+
+    .themes { background: var(--off-white); }
+    .theme-intro { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin-top: 60px; }
+    .theme-card { background: var(--white); padding: 48px 40px; border-bottom: 3px solid transparent; transition: border-color 0.3s; }
+    .theme-card:hover { border-color: var(--gold); }
+    .theme-num { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; color: rgba(184,164,90,0.2); line-height: 1; margin-bottom: 24px; }
+    .theme-name { font-size: 13px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .theme-desc { font-size: 15px; font-weight: 300; color: var(--dark-grey); line-height: 1.75; }
+
+    .testimonials { background: var(--cream); padding-bottom: 160px; }
+    .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 80px; }
+    .signal-card { background: var(--white); padding: 48px 40px; display: flex; flex-direction: column; gap: 32px; position: relative; transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); }
+    .signal-card:hover { transform: translateY(-4px); }
+    .signal-card::before { content: '\201C'; font-family: 'Cormorant Garamond', serif; font-size: 80px; color: rgba(184,164,90,0.15); line-height: 1; position: absolute; top: 24px; left: 32px; }
+    .signal-card blockquote { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 400; font-style: italic; line-height: 1.65; color: var(--charcoal); padding-top: 24px; }
+    .signal-card .signal-meta { display: flex; flex-direction: column; gap: 6px; }
+    .signal-card .signal-name { font-size: 13px; font-weight: 500; letter-spacing: 0.08em; color: var(--charcoal); }
+    .signal-card .signal-role { font-size: 12px; font-weight: 300; color: var(--mid-grey); letter-spacing: 0.04em; }
+    .signal-badge { display: inline-block; font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(184,164,90,0.4); padding: 5px 12px; border-radius: 2px; align-self: flex-start; }
+    .signal-card.wide { grid-column: span 2; }
+    .signal-card.wide blockquote { font-size: 22px; }
+
+    .ebook { background: var(--charcoal); padding: 100px 60px; }
+    .ebook-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .ebook .section-label { color: var(--gold-light); }
+    .ebook-headline { font-family: 'Cormorant Garamond', serif; font-size: clamp(34px, 4.5vw, 52px); font-weight: 300; line-height: 1.2; color: var(--cream); margin-bottom: 24px; }
+    .ebook-headline em { font-style: italic; color: var(--gold-light); }
+    .ebook-desc { font-size: 16px; font-weight: 300; color: rgba(247,245,240,0.7); line-height: 1.8; margin-bottom: 28px; }
+    .ebook-cta { display: inline-block; background: var(--gold); color: var(--charcoal); font-size: 13px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; padding: 16px 36px; border-radius: 2px; transition: background 0.3s, transform 0.2s; margin-top: 12px; }
+    .ebook-cta:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .ebook-traits { display: grid; gap: 12px; }
+    .ebook-trait { display: flex; align-items: flex-start; gap: 16px; padding: 18px 22px; background: rgba(255,255,255,0.04); border: 1px solid rgba(184,164,90,0.15); border-radius: 2px; }
+    .trait-num { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; color: var(--gold-muted); min-width: 28px; line-height: 1.2; }
+    .trait-text { font-size: 14px; font-weight: 300; color: rgba(247,245,240,0.75); line-height: 1.6; }
+
+    .pattern { background: var(--charcoal-mid); padding: 120px 60px; }
+    .pattern .section-label { color: var(--gold-light); }
+    .pattern .section-headline { color: var(--cream); max-width: 640px; }
+    .pattern-body { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 60px; }
+    .pattern-col p { font-size: 16px; font-weight: 300; color: rgba(247,245,240,0.7); line-height: 1.85; margin-bottom: 28px; }
+    .pattern-list { list-style: none; display: grid; gap: 16px; margin-top: 40px; }
+    .pattern-list li { display: flex; align-items: flex-start; gap: 20px; font-size: 15px; font-weight: 300; color: rgba(247,245,240,0.75); line-height: 1.6; }
+    .pattern-list li .bullet { width: 32px; height: 1px; background: var(--gold); margin-top: 12px; flex-shrink: 0; }
+    .pattern-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 44px); font-weight: 300; font-style: italic; color: var(--gold-light); line-height: 1.4; border-left: 2px solid var(--gold-muted); padding-left: 40px; }
+
+    .trusted { background: var(--off-white); padding: 80px 60px; text-align: center; }
+    .trusted-label { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--light-grey); margin-bottom: 40px; }
+    .trusted-names { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px 60px; }
+    .trusted-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 400; color: var(--mid-grey); letter-spacing: 0.04em; }
+
+    .closing { background: var(--white); padding: 160px 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+    .closing-headline { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 5vw, 64px); font-weight: 300; line-height: 1.2; color: var(--charcoal); }
+    .closing-headline em { font-style: italic; color: var(--gold); }
+    .closing-body { display: grid; gap: 24px; }
+    .closing-body p { font-size: 17px; font-weight: 300; color: var(--dark-grey); line-height: 1.85; }
+    .closing-links { display: flex; flex-direction: column; gap: 16px; margin-top: 8px; }
+    .closing-cta { display: inline-block; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--charcoal); text-decoration: none; padding-bottom: 4px; border-bottom: 1px solid var(--gold); transition: color 0.3s; align-self: flex-start; }
+    .closing-cta:hover { color: var(--gold); }
+    .closing-cta.secondary { color: var(--mid-grey); border-color: rgba(184,164,90,0.4); }
+    .closing-cta.secondary:hover { color: var(--gold); border-color: var(--gold); }
+
+    footer { background: var(--charcoal); padding: 48px 60px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: rgba(247,245,240,0.5); letter-spacing: 0.06em; }
+    .footer-mark { font-size: 12px; letter-spacing: 0.1em; color: rgba(184,164,90,0.5); text-transform: uppercase; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-label    { animation: fadeUp 0.8s ease 0.1s both; }
+    .hero-headline { animation: fadeUp 0.9s ease 0.25s both; }
+    .hero-body     { animation: fadeUp 0.9s ease 0.45s both; }
+    .hero-scroll   { animation: fadeUp 0.8s ease 0.65s both; }
+
+    @media (max-width: 900px) {
+      nav { padding: 20px 30px; }
+      section, .hero, .closing, .pattern, .philosophy, .ebook { padding: 80px 30px; }
+      .divider { margin: 0 30px; }
+      .geo-accent { display: none; }
+      .phil-grid, .theme-intro, .cards-grid, .pattern-body, .closing, .ebook-inner { grid-template-columns: 1fr; gap: 40px; }
+      .signal-card.wide { grid-column: span 1; }
+      footer { flex-direction: column; gap: 16px; text-align: center; }
+      .trusted { padding: 60px 30px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Aniekan A. <span>Jim</span></a>
+    <a href="#contact" class="nav-link">Reach Out</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="geo-accent" aria-hidden="true">
+      <div class="sq"></div><div class="sq"></div>
+      <div class="sq"></div><div class="sq"></div>
+    </div>
+    <p class="hero-label">Signals of Irreplaceability</p>
+    <h1 class="hero-headline">
+      What people say<br/>after working<br/>with <em>me.</em>
+    </h1>
+    <div class="hero-body">
+      <p>
+        Being irreplaceable is not a title you give yourself. It is something other people say about you... without being asked.
+      </p>
+      <p>
+        This page shows real messages from real people. These are the signs of something no machine can copy... a way of thinking that changes how others think too.
+      </p>
+    </div>
+    <div class="hero-scroll">Scroll to read</div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PHILOSOPHY -->
+  <section class="philosophy">
+    <p class="section-label">The Idea</p>
+    <h2 class="section-headline">The New Era of <em>Irreplaceability</em></h2>
+    <p class="body-text">
+      For a long time, people became valuable by being skilled, hard-working, and dependable. AI can now do many of those things. The rules have changed... and most people don't know it yet.
+    </p>
+    <div class="phil-grid">
+      <div class="phil-column">
+        <h3>What AI can replace</h3>
+        <ul>
+          <li>Skilled work and output</li>
+          <li>Technical tasks</li>
+          <li>Getting things done fast</li>
+          <li>Copy-and-paste thinking</li>
+          <li>Looking things up</li>
+        </ul>
+        <div class="phil-divider"></div>
+        <p>If your value is only in what you produce... it can be replaced. The real question is no longer "are you skilled?" It is... "are you you in a way no machine can copy?"</p>
+      </div>
+      <div class="phil-column">
+        <h3>What stays human</h3>
+        <ul>
+          <li>Your own point of view</li>
+          <li>Good judgment and taste</li>
+          <li>The power to change how others think</li>
+          <li>Seeing how big ideas connect</li>
+          <li>Stories that move people to act</li>
+        </ul>
+        <div class="phil-divider"></div>
+        <p>People who cannot be replaced are not trying to be better robots. They are building on the one thing that is fully theirs... their way of seeing the world. That is what the signals below are made of.</p>
+      </div>
+    </div>
+    <p class="phil-pull">
+      "The messages below don't talk about work output.<br/>They talk about how people <em>think differently</em> after meeting you."
+    </p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- THEMES -->
+  <section class="themes">
+    <p class="section-label">What People Experience</p>
+    <h2 class="section-headline">The signals, <em>sorted.</em></h2>
+    <p class="body-text">When you read enough messages like these, patterns show up. Not about tasks being done on time... but about what changed inside the people who worked with me.</p>
+    <div class="theme-intro">
+      <div class="theme-card">
+        <div class="theme-num">01</div>
+        <div class="theme-name">Perspective Shift</div>
+        <p class="theme-desc">People say that one talk or one piece of content changed how they see their work... their market... or even themselves.</p>
+      </div>
+      <div class="theme-card">
+        <div class="theme-num">02</div>
+        <div class="theme-name">Clarity</div>
+        <p class="theme-desc">From feeling lost to knowing the next step. From being unclear about their value to finding the right words. Helping people say what they couldn't say before.</p>
+      </div>
+      <div class="theme-card">
+        <div class="theme-num">03</div>
+        <div class="theme-name">Strategic Depth</div>
+        <p class="theme-desc">Not just advice... but a clear, logical way of thinking that helps others take their work more seriously and make smarter choices.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <p class="section-label">Real Messages</p>
+    <h2 class="section-headline"><em>Unfiltered.</em> Unscripted. Real.</h2>
+    <p class="body-text">These are real messages, public posts, and recorded reviews. Light grammar clean-up only... the voice and meaning are fully preserved.</p>
+
+    <div class="cards-grid">
+
+      <div class="signal-card wide">
+        <blockquote>You have gone beyond what I expected. I had no idea you would send me so much useful material... you've been so caring and so present. You have been really supportive beyond a normal work relationship. I really feel your heart, your love, and your care. I really, really appreciate how data-driven you are... and I think that's super important in business. Being pushed to think more clearly and logically... you are the best.</blockquote>
+        <div class="signal-meta">
+          <span class="signal-name">Vanessa Storm</span>
+          <span class="signal-role">Subconscious Reprogramming Coach</span>
+        </div>
+        <span class="signal-badge">Beyond Expectations</span>
+      </div>
+
+      <div class="signal-card">
+        <blockquote>Only two days in and I am absolutely blown away. He has insane clarity and a clear step-by-step plan that helps you get closer to your goal every single day. The first call gave me a new way of seeing my own journey... without it, I wouldn't have been able to move forward. I am sure I'm going to be a whole new professional.</blockquote>
+        <div class="signal-meta">
+          <span class="signal-name">Saadia Maqbool</span>
+          <span class="signal-role">Content Marketer</span>
+        </div>
+        <span class="signal-badge">Perspective Shift</span>
+      </div>
+
+      <div class="signal-card">
+        <blockquote>This process is really good at helping you narrow down who you want to serve and where to start. It helps coaches who are just starting out grab hold of that "aha" moment about their true niche. I could finally see that my passion is for helping leaders build great teams... and that became clear through this work.</blockquote>
+        <div class="signal-meta">
+          <span class="signal-name">Lance Dawe</span>
+          <span class="signal-role">Leadership Coach</span>
+        </div>
+        <span class="signal-badge">Clarity</span>
+      </div>
+
+      <div class="signal-card wide">
+        <blockquote>It was mind-shifting. He went deep into my thinking and helped me deal with the things that were stopping me from getting clients. He even helped me with copywriting... guiding both the skill and the outreach side. I can see many more stuck copywriters who need this kind of help.</blockquote>
+        <div class="signal-meta">
+          <span class="signal-name">Raafe S.</span>
+          <span class="signal-role">Copywriter</span>
+        </div>
+        <span class="signal-badge">Mindset + Strategy</span>
+      </div>
+
+      <div class="signal-card">
+        <blockquote>My journey into copywriting cannot be fully told without this mentor... a man who leads people to the water and helps them drink. I've learned that you can always find your own strength... while never trying to be like someone else.</blockquote>
+        <div class="signal-meta">
+          <span class="signal-name">Ndipmo O.</span>
+          <span class="signal-role">Copywriter</span>
+        </div>
+        <span class="signal-badge">Irreplaceable Identity</span>
+      </div>
+
+      <div class="signal-card">
+        <blockquote>This coaching made me learn more about my field and gave me the confidence to do my work. Before now, I used to be scared. Right now I understand what my clients are doing and what they want to achieve with each task I'm given.</blockquote>
+        <div class="signal-meta">
+          <span class="signal-name">Uche O.</span>
+          <span class="signal-role">Marketing Copywriter</span>
+        </div>
+        <span class="signal-badge">Confidence + Clarity</span>
+      </div>
+
+      <div class="signal-card">
+        <blockquote>Just on the first day, I got clarity on the things that had been holding me back from getting clients. I went through a lot of mindset shifts and learned more about how to succeed. The passion to see copywriters succeed... that was the biggest highlight for me.</blockquote>
+        <div class="signal-meta">
+          <span class="signal-name">Uche O.</span>
+          <span class="signal-role">Copywriter</span>
+        </div>
+        <span class="signal-badge">Perspective Shift</span>
+      </div>
+
+      <div class="signal-card">
+        <blockquote>I thought I already knew how to find clients. But after talking to Aniekan A. Jim, I found out there is so much I still didn't know. This was not to put me down... it was to give me the right tools for a world that keeps changing. My journey would not be complete without him.</blockquote>
+        <div class="signal-meta">
+          <span class="signal-name">Evalyn V.</span>
+          <span class="signal-role">Copywriter</span>
+        </div>
+        <span class="signal-badge">Strategic Depth</span>
+      </div>
+
+      <div class="signal-card">
+        <blockquote>I can see now that I need to stop speaking in general terms and start speaking more directly to my ideal client. Thank you for being my daily reminder of this... it takes real awareness to shift gears bit by bit.</blockquote>
+        <div class="signal-meta">
+          <span class="signal-name">Vanessa Storm</span>
+          <span class="signal-role">Subconscious Reprogramming Coach</span>
+        </div>
+        <span class="signal-badge">Thinking Partner</span>
+      </div>
+
+      <div class="signal-card">
+        <blockquote>Thank you for creating thought-provoking posts. Much different than the opposite.</blockquote>
+        <div class="signal-meta">
+          <span class="signal-name">Community Member</span>
+          <span class="signal-role">Direct Message</span>
+        </div>
+        <span class="signal-badge">Original Voice</span>
+      </div>
+
+      <div class="signal-card">
+        <blockquote>This creates an "Oh" for us all... thanks for sharing.</blockquote>
+        <div class="signal-meta">
+          <span class="signal-name">Sandy B. Simmons</span>
+          <span class="signal-role">Community Comment</span>
+        </div>
+        <span class="signal-badge">Insight Catalyst</span>
+      </div>
+
+      <div class="signal-card">
+        <blockquote>Awesome post... made some great points. Oh, the ideas in my head!</blockquote>
+        <div class="signal-meta">
+          <span class="signal-name">Jennifer Wertz-Medvec</span>
+          <span class="signal-role">Community Comment</span>
+        </div>
+        <span class="signal-badge">Idea Ignition</span>
+      </div>
+
+      <div class="signal-card">
+        <blockquote>You are a great writer.</blockquote>
+        <div class="signal-meta">
+          <span class="signal-name">Maddie</span>
+          <span class="signal-role">Direct Message</span>
+        </div>
+        <span class="signal-badge">Craft Recognition</span>
+      </div>
+
+      <div class="signal-card wide">
+        <blockquote>Over the years we've worked together, Aniekan has written excellent copy that moved our marketing in the right direction. His work on tech and other topics is quite creative. His love of research makes every piece solid and speaks directly to the right people. I would recommend him for his hunger for excellence and his eye for detail. It has always been a pleasure having him on the team.</blockquote>
+        <div class="signal-meta">
+          <span class="signal-name">Edimek Peter</span>
+          <span class="signal-role">Data Visualization Specialist ... LinkedIn Recommendation</span>
+        </div>
+        <span class="signal-badge">Research-Driven Craft</span>
+      </div>
+
+      <div class="signal-card">
+        <blockquote>This is to say that Mr Aniekan is a Seasoned Business Consultant with a difference. He is Reliable, Trustworthy, Dependable, Honest, Resilient, and Result-oriented. These qualities make him stand out among others. I recommend him to anyone who needs his services.</blockquote>
+        <div class="signal-meta">
+          <span class="signal-name">Mr Heritage</span>
+          <span class="signal-role">CEO, Abundant Grace Montessori Educational Center</span>
+        </div>
+        <span class="signal-badge">Trust & Dependability</span>
+      </div>
+
+      <div class="signal-card">
+        <blockquote>We need Aniekan Abraham Jim especially to be in tomorrow's meeting.</blockquote>
+        <div class="signal-meta">
+          <span class="signal-name">Stan P.</span>
+          <span class="signal-role">Team Lead ... Group Message</span>
+        </div>
+        <span class="signal-badge">Essential Presence</span>
+      </div>
+
+      <div class="signal-card">
+        <blockquote>Awesome! I'm loving this team work.</blockquote>
+        <div class="signal-meta">
+          <span class="signal-name">Vanessa Storm</span>
+          <span class="signal-role">Subconscious Reprogramming Coach</span>
+        </div>
+        <span class="signal-badge">Creative Partnership</span>
+      </div>
+
+      <div class="signal-card">
+        <blockquote>Jim is a business strategist and incredible content creator.</blockquote>
+        <div class="signal-meta">
+          <span class="signal-name">Vanessa Storm</span>
+          <span class="signal-role">Referring Jim to a client ... WhatsApp</span>
+        </div>
+        <span class="signal-badge">Trusted Referral</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EBOOK -->
+  <section class="ebook">
+    <div class="ebook-inner">
+      <div>
+        <p class="section-label">Free Resource</p>
+        <h2 class="ebook-headline">The 10 Traits of <em>Irreplaceable Creatives</em></h2>
+        <p class="ebook-desc">
+          These are not made-up traits. They are the specific, real, and proven behaviors that set apart the creative leaders who truly cannot be replaced... from everyone else who is simply very good at their job.
+        </p>
+        <p class="ebook-desc">
+          Read this and find out which traits you already have... and which ones are worth building next.
+        </p>
+        <a href="https://aniekanajim.github.io/The-Unreplaceable-Factor/" target="_blank" class="ebook-cta">Read the Free Ebook</a>
+      </div>
+      <div class="ebook-traits">
+        <div class="ebook-trait">
+          <span class="trait-num">01</span>
+          <span class="trait-text">They have a clear point of view that others can feel</span>
+        </div>
+        <div class="ebook-trait">
+          <span class="trait-num">02</span>
+          <span class="trait-text">They help others see things in a new way</span>
+        </div>
+        <div class="ebook-trait">
+          <span class="trait-num">03</span>
+          <span class="trait-text">They tell stories that make people want to act</span>
+        </div>
+        <div class="ebook-trait">
+          <span class="trait-num">04</span>
+          <span class="trait-text">They use research and data to back up their ideas</span>
+        </div>
+        <div class="ebook-trait">
+          <span class="trait-num">05</span>
+          <span class="trait-text">They connect unlike ideas to create something new</span>
+        </div>
+        <div class="ebook-trait">
+          <span class="trait-num">06 ... 10</span>
+          <span class="trait-text">And five more that show up in the people you can't stop thinking about</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE PATTERN -->
+  <section class="pattern">
+    <p class="section-label">The Pattern</p>
+    <h2 class="section-headline">When you read these messages, <em>something appears.</em></h2>
+    <div class="pattern-body">
+      <div class="pattern-col">
+        <p>Look at all these messages... from coaches, copywriters, strategists, and CEOs. Not one person talks about a task being done on time or a file being sent over.</p>
+        <p>They talk about what changed inside them. A new way of seeing their work. More boldness in how they speak. A clearer picture of their own value. A big idea sparked by one talk or one post.</p>
+        <p>That is not just good work. That is the kind of impact that comes from someone who sees things in a way that others haven't... but instantly know is true.</p>
+        <ul class="pattern-list">
+          <li><div class="bullet"></div><span>Not design... <strong>thinking</strong></span></li>
+          <li><div class="bullet"></div><span>Not delivery... <strong>clarity they didn't have before</strong></span></li>
+          <li><div class="bullet"></div><span>Not content... <strong>a shift in how they see the world</strong></span></li>
+          <li><div class="bullet"></div><span>Not strategy slides... <strong>the moment they finally got it</strong></span></li>
+        </ul>
+      </div>
+      <div class="pattern-col">
+        <p class="pattern-quote">
+          "My journey into copywriting cannot be fully told without this mentor."
+          <br/><br/>... Ndipmo O.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUSTED BY -->
+  <section class="trusted">
+    <p class="trusted-label">Trusted by professionals across</p>
+    <div class="trusted-names">
+      <span class="trusted-name">Leadership Coaches</span>
+      <span class="trusted-name">Subconscious Coaches</span>
+      <span class="trusted-name">Copywriters</span>
+      <span class="trusted-name">Finance Coaches</span>
+      <span class="trusted-name">Content Marketers</span>
+      <span class="trusted-name">Data Specialists</span>
+      <span class="trusted-name">Educational Leaders</span>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="closing" id="contact">
+    <div>
+      <h2 class="closing-headline">
+        If you are building something<br/><em>that matters...</em>
+      </h2>
+    </div>
+    <div class="closing-body">
+      <p>
+        I work with creatives, coaches, and leaders who want to build a voice that cannot be copied... not just get better at their tasks.
+      </p>
+      <p>
+        If what you've read here feels right to you, and you need someone who thinks deeply and cares deeply... you are welcome to reach out.
+      </p>
+      <p style="font-size:14px; color: var(--light-grey); font-style:italic;">
+        No pitch. No pressure. Just a real talk.
+      </p>
+      <div class="closing-links">
+        <a href="mailto:aniekanjim600@gmail.com" class="closing-cta">Send me an email</a>
+        <a href="https://www.linkedin.com/in/aniekan-abraham-jim-477467252" target="_blank" class="closing-cta secondary">Connect on LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-name">Aniekan A. Jim</span>
+    <span class="footer-mark">Institute of Unreplaceable Creatives &nbsp;&#183;&nbsp; Systems &#183; Leverage &#183; Mastery</span>
+  </footer>
+
+</body>
+</html>
